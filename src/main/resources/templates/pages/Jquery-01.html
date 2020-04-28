@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>这是  jqyery 页面</h1>
+<div>
+<button onclick="doGet()">get()</button>
+<button onclick="doGetJSON()">getJSON()</button>
+<button onclick="doPost()">post()</button>
+<button onclick="doAjax()">ajax()</button>
+</div>
+<script type="text/javascript" src="/ajax/jquery.min.js"></script>
+<script type="text/javascript">
+	function doGet(){
+		var url="doFindActivitys";
+		var params="";
+		$.get(url,params,function(result){
+			console.log(result);
+		},"JSON")
+	}
+	 function doGetJSON(){
+	    	var url="doFindActivitys";
+	    	var params="";
+	    	//ajax get请求
+	    	//对服务端返回的数据以json方式进行处理，例如将服务端返回的字符串转换为json格式的对象
+	    	//$符号在这里代码jQuery对象
+	    	$.getJSON(url,params,function(result){
+	    		console.log(result);
+	    	});
+	    }
+	function doPost(){
+		var url="doSaveActivity";
+		var params="title=title123&category=kasks&startTime=2020/04/23 13:00&endTime=2020/04/24 19:22";
+		$.post(url,params,function(result){
+			console.log(result);
+			alert(result);
+		});
+	}
+	function doAjax(){
+		var url="doFindActivitys";
+		var params="";
+		$.ajax({
+			"type":"POST",
+			"url":url,
+			"data":params,
+			"dataType":"JSON",
+			"success":function(result){
+				console.log(result);
+			}
+		});
+	}
+	
+	
+</script>
+</body>
+</html>
